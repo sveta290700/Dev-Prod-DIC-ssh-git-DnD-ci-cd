@@ -8,7 +8,7 @@
 ##### 1) build_prod.sh
 Был заранее создан ЕП /deploy, выдающий json-сообщение 'Successful dev deploy!'.
 Для проверки отправки изменений сообщение по ЕП /deploy было изменено на 'Successful prod deploy!'.
-Далее на локальной машине через Git Bash был запущен скрипт build_prod.sh.
+Далее на локальной машине через Git Bash был запущен скрипт deploy_prod.sh.
 
 <a href="https://ibb.co/0Mbq8TP"><img src="https://i.ibb.co/6PCYVz6/3.png" alt="3" border="0"></a>
 
@@ -18,7 +18,7 @@
 <a href="https://ibb.co/xqZqKjq"><img src="https://i.ibb.co/zVdVWRV/4.png" alt="4" border="0"></a>
 ##### 2) build_dev.sh
 Для проверки отправки изменений сообщение по ЕП /deploy было изменено на 'Successful dev deploy!'.
-Далее на локальной машине через Git Bash был запущен скрипт build_dev.sh.
+Далее на локальной машине через Git Bash был запущен скрипт deploy_dev.sh.
 
 <a href="https://ibb.co/wWCn7Lr"><img src="https://i.ibb.co/bBL4F3R/5.png" alt="5" border="0"></a>
 
