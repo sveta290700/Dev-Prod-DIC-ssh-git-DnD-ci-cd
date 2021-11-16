@@ -35,4 +35,14 @@ class HomeController extends AbstractController
             'APP_ENV' => $this->service->env()
         ]);
     }
+
+    /**
+     * @Route("/deploy", name="home_deploy")
+     */
+    public function deploy(): Response
+    {
+        return $this->json([
+            'message' => 'Deploy success!'
+        ]);
+    }
 }

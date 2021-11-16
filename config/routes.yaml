@@ -4,3 +4,6 @@ index:
 health:
     path: /health
     controller: App\Controller\HomeController::health
+deploy:
+    path: /deploy
+    controller: App\Controller\HomeController::deploy
