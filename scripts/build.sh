@@ -1,6 +1,5 @@
 cd ..
-git stash
-git pull origin master
+git pull
 composer install
 bin/console cache:clear
 bin/console cache:warmup

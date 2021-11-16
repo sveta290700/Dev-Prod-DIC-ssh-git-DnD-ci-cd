@@ -42,7 +42,7 @@ class HomeController extends AbstractController
     public function deploy(): Response
     {
         return $this->json([
-            'message' => 'Deploy test success!'
+            'message' => 'Successful dev deploy!'
         ]);
     }
 }
