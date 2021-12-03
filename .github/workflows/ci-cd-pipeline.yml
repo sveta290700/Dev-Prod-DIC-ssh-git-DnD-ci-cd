@@ -9,6 +9,7 @@ on:
 jobs:
   cicd:
     runs-on: ubuntu-latest
+    environment: staging
     steps:
       - uses: actions/checkout@v2
       - name: Composer install
@@ -21,3 +22,11 @@ jobs:
         run: php ./vendor/bin/phpunit
       - name: Phpstan
         run: php vendor/bin/phpstan analyse -l 9 src
+      - name: ssh deploy
+        uses: easingthemes/ssh-deploy@v2.2.11
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ${{ secrets.TARGET }}
