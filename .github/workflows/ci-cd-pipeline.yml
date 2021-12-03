@@ -27,12 +27,11 @@ jobs:
       - name: SFTP Deploy
         uses: wlixcc/SFTP-Deploy-Action@v1.2.1
         with:
-          username: sammy
-          server: 178.62.205.95
-          port: 8080
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          
-          # will put all file under this path
-          local_path: ./* # default is ./*
+          username: 'sammy'
+          server: '178.62.205.95'
+          port: '8080'
+          ssh_private_key: '${{ secrets.SSH_PRIVATE_KEY }}'
+          local_path: './dist/*'
           # files will copy to under remote_path
-          remote_path: /var/www/html/lab67_dev
+          remote_path: '/var/www/html/lab67_dev'
+          args: '-o ConnectTimeout=5'
