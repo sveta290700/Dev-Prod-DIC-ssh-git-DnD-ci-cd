@@ -15,14 +15,17 @@ jobs:
         run: composer install
       - name: Cache clear
         run: php bin/console cache:clear
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
       - uses: actions/upload-artifact@v2
         with:
           name: build-project
           path: /home/runner/work/lab67/lab67
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: my-artifact
       - name: Check folder
         run: ls -la
       - name: Unit tests
