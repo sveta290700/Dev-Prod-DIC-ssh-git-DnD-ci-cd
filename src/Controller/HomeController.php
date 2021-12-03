@@ -36,13 +36,12 @@ class HomeController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/deploy", name="home_deploy")
-     */
+    /*
     public function deploy(): Response
     {
         return $this->json([
             'message' => 'Successful dev deploy!'
         ]);
     }
+    */
 }
