@@ -36,12 +36,10 @@ class HomeController extends AbstractController
         ]);
     }
 
-    /*
     public function deploy(): Response
     {
         return $this->json([
-            'message' => 'Successful dev deploy!'
+            'message' => 'Successful staging deploy!'
         ]);
     }
-    */
 }
