@@ -13,5 +13,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: Composer install
         run: composer install
-      - name: Check project folder
-        run: ls -la
+      - name: Cache clear
+        run: php bin/console cache:clear
