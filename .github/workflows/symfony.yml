@@ -19,5 +19,5 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Composer install
-        run: ./vendor/bin/phpunit
+      - name: Unit tests
+        run: vendor/bin/phpunit
