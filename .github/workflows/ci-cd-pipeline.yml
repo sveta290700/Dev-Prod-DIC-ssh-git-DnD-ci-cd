@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  cicd:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,18 +15,7 @@ jobs:
         run: composer install
       - name: Cache clear
         run: php bin/console cache:clear
-      - uses: actions/upload-artifact@v2
-        with:
-          name: build-project
-          path: /home/runner/work/lab67/lab67
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - uses: actions/download-artifact@v2
-        with:
-          name: build-project
       - name: Check folder
         run: ls -la
       - name: Unit tests
-        run: ./vendor/bin/phpunit
+        run: php ./vendor/bin/phpunit
