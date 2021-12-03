@@ -1,4 +1,4 @@
-name: Ci-cd-pipeline
+name: сi-cd-pipeline
 
 on:
   push:
@@ -9,25 +9,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  cicd:
+  build:
     runs-on: ubuntu-latest
-    environment: staging
     steps:
       - uses: actions/checkout@v2
       - name: Composer install
         run: composer install
       - name: Cache clear
         run: php bin/console cache:clear
-      - name: Check folder
-        run: ls -la
-      - name: Unit testing
-        run: php ./vendor/bin/phpunit
-      - name: Phpstan
-        run: php vendor/bin/phpstan analyse -l 9 src
-      - name: ssh deploy
-        uses: easingthemes/ssh-deploy@v2.1.4
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: ${{ secrets.TARGET }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build-project
+          
