@@ -5,6 +5,8 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+    
+  workflow_dispatch:
 
 jobs:
   cicd:
@@ -22,11 +24,15 @@ jobs:
         run: php ./vendor/bin/phpunit
       - name: Phpstan
         run: php vendor/bin/phpstan analyse -l 9 src
-      - name: ssh deploy
-        uses: easingthemes/ssh-deploy@v2.2.11
+      - name: SFTP Deploy
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.1
         with:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: ${{ secrets.TARGET }}
+          username: sammy
+          server: 178.62.205.95
+          port: 8080
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          
+          # will put all file under this path
+          local_path: ./* # default is ./*
+          # files will copy to under remote_path
+          remote_path: /var/www/html/lab67_dev
