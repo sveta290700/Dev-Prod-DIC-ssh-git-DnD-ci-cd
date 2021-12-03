@@ -1,17 +1,27 @@
-name: SSH Deploy
+name: Ci-cd-pipeline
 
 on:
   push:
     branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
-  deploy:
+  cicd:
     runs-on: ubuntu-latest
-    
     environment: staging
-
     steps:
       - uses: actions/checkout@v2
+      - name: Composer install
+        run: composer install
+      - name: Cache clear
+        run: php bin/console cache:clear
+      - name: Check folder
+        run: ls -la
+      - name: Unit testing
+        run: php ./vendor/bin/phpunit
+      - name: Phpstan
+        run: php vendor/bin/phpstan analyse -l 9 src
       - name: ssh deploy
         uses: easingthemes/ssh-deploy@v2.1.4
         env:
