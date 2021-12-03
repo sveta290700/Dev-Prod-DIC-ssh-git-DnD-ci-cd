@@ -17,5 +17,7 @@ jobs:
         run: php bin/console cache:clear
       - name: Check folder
         run: ls -la
-      - name: Unit tests
+      - name: Unit testing
         run: php ./vendor/bin/phpunit
+      - name: Phpstan
+        run: php vendor/bin/phpstan analyse -l 9 src
