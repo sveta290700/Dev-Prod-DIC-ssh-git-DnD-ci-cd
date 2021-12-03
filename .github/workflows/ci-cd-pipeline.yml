@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v2
         with:
-          name: my-artifact
+          name: build-project
       - name: Check folder
         run: ls -la
       - name: Unit tests
