@@ -20,4 +20,4 @@ jobs:
     needs: build
     steps:
       - name: Unit tests
-        run: vendor/bin/phpunit
+        run: ./vendor/bin/phpunit
